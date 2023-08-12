@@ -1,8 +1,12 @@
 package com.example.challenge3.repository;
 
-import com.example.challenge3.entity.Post;
+import com.example.challenge3.entity.PostEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface PostRepository extends JpaRepository<Post, Long> {
+@Repository
+public interface PostRepository extends JpaRepository<PostEntity, String> {
+    Boolean existsByTitle(String title);
 }
+
 

@@ -1,7 +1,7 @@
 package com.example.challenge3.service;
 
-import com.example.challenge3.entity.PostEntity;
-import com.example.challenge3.repository.PostRepository;
+import com.example.challenge3.entity.CommentEntity;
+import com.example.challenge3.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +11,11 @@ import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
-public class PostService {
+public class CommentService {
 
-    private final PostRepository repository;
+    private final CommentRepository repository;
 
-    public PostEntity savePost(PostEntity entity) {
+    public CommentEntity saveComment(CommentEntity entity) {
         try {
             return repository.save(entity);
         } catch (Exception e) {
@@ -23,19 +23,20 @@ public class PostService {
         }
     }
 
-    public List<PostEntity> getAllPosts() {
+    public List<CommentEntity> getAllComments() {
         try{
             return repository.findAll();
         } catch (Exception e) {
-            throw new RuntimeException("Error to get all posts" + e);
+            throw new RuntimeException("Error to get all comments" + e);
         }
     }
 
-    public Boolean existsByTitle(String title) {
+    public Boolean existsByBody(String body) {
         try {
-            return repository.existsByTitle(title);
+            return repository.existsByBody(body);
         }catch (Exception e) {
-            throw new RuntimeException(format("Error to get post by title",title) + e);
+            throw new RuntimeException(format("Error to get post by body",body) + e);
         }
     }
 }
+

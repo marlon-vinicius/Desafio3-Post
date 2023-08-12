@@ -1,16 +1,16 @@
-package com.example.challenge3.client.response;
+package com.example.challenge3.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostResponse {
+@Builder
+public class PostWithCommentsDTO {
 
     @JsonProperty("id")
     private Long id;
@@ -22,5 +22,5 @@ public class PostResponse {
     private String body;
 
     @JsonProperty("comments")
-    private List<CommentResponse> comments;
+    private List<CommentDTO> comments;
 }

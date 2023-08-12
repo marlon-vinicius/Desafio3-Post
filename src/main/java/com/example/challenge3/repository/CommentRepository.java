@@ -1,9 +1,10 @@
 package com.example.challenge3.repository;
 
-import com.example.challenge3.entity.Comment;
+import com.example.challenge3.entity.CommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public interface CommentRepository extends JpaRepository<Comment, Long> {
-
+@Repository
+public interface CommentRepository extends JpaRepository<CommentEntity, String>{
+    Boolean existsByBody(String body);
 }

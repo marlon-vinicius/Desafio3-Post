@@ -1,19 +1,19 @@
-package com.example.challenge3.client.response;
+package com.example.challenge3.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentResponse {
+@Builder
+public class CommentDTO {
 
     @JsonProperty("id")
     private Long id;
 
-    @JsonProperty("postId")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long postId;
 
     @JsonProperty("body")
