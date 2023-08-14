@@ -8,7 +8,7 @@ The code utilizes the following technologies and libraries:
 
 - **Java**: The programming language used for developing the project.
 
-- - **Spring Boot**: A framework for Java.
+- **Spring Boot**: A framework for Java.
 
 - **H2**: A database embbeded
 
@@ -36,7 +36,7 @@ git clone https://github.com/marlon-vinicius/Desafio3-Post.git
 
 4. Go to **`PostApplication.java`** and run the code.
 
-5. To see a application go to [http://localhost:8080/](http://localhost:8080/swagger-ui/index.html) in your browser and than use a endpoint GET /posts to see all posts with comments. 
+5. To see a application go to [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) in your browser and than use a endpoint GET /posts to see all posts with comments. 
 
 ## Final Thoughts
 
