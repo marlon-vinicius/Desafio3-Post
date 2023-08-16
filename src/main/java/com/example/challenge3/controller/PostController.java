@@ -1,42 +1,46 @@
 package com.example.challenge3.controller;
 
-import com.example.challenge3.dto.CommentDTO;
-import com.example.challenge3.dto.PostDTO;
+
 import com.example.challenge3.dto.PostWithCommentsDTO;
 import com.example.challenge3.service.ClientService;
-import io.swagger.v3.oas.annotations.Operation;
+import com.example.challenge3.service.PostService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/posts")
 @RequiredArgsConstructor
 @Tag(name = "post-api")
 public class PostController {
 
     private final ClientService service;
+    private final PostService postService;
 
-    @Operation(summary = "Get all posts", method = "GET")
-    @GetMapping("post")
-    public ResponseEntity<List<PostDTO>> getAllPosts(){
-        return ResponseEntity.ok(service.getAllPosts());
-    }
-
-    @Operation(summary = "Get all comments", method = "GET")
-    @GetMapping("comments")
-    public ResponseEntity<List<CommentDTO>> getAllComments(){
-        return ResponseEntity.ok(service.getAllComments());
-    }
-
-    @GetMapping("posts")
-    public ResponseEntity<List<PostWithCommentsDTO>> getAllPostsWithComments() {
+    @GetMapping
+    public ResponseEntity<List<PostWithCommentsDTO>> queryPosts() {
         List<PostWithCommentsDTO> postsWithComments = service.getAllPostsWithComments();
         return ResponseEntity.ok(postsWithComments);
+    }
+
+    @PostMapping("/{postId}")
+    public ResponseEntity<String> processPost(@PathVariable Long postId) {
+        postService.processPost(postId);
+        return ResponseEntity.ok("Post processed.");
+    }
+
+    @DeleteMapping("/{postId}")
+    public ResponseEntity<String> disablePost(@PathVariable Long postId) {
+        postService.disablePost(postId);
+        return ResponseEntity.ok("Post disabled.");
+    }
+
+    @PutMapping("/{postId}")
+    public ResponseEntity<String> reprocessPost(@PathVariable Long postId) {
+        postService.reprocessPost(postId);
+        return ResponseEntity.ok("Post reprocessed.");
     }
 }

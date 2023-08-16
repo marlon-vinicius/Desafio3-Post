@@ -23,4 +23,7 @@ public class PostWithCommentsDTO {
 
     @JsonProperty("comments")
     private List<CommentDTO> comments;
+
+    @JsonProperty("history")
+    private List<HistoryEntryDTO> history;
 }
